@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html events</title>
+</head>
+<body style="background-color: beige;">
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="ball" src="https://images.pexels.com/photos/945471/pexels-photo-945471.jpeg?auto=compress&cs=tinysrgb&w=600"></li>
+            <li><img width="200px" id="ring" src="https://images.pexels.com/photos/1331750/pexels-photo-1331750.jpeg?auto=compress&cs=tinysrgb&w=600"></li>
+            <li><img width="200px" id="player" src="https://images.pexels.com/photos/2834917/pexels-photo-2834917.jpeg?auto=compress&cs=tinysrgb&w=600"></li>
+            <li><a style="color:brown" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+    
+</body>
+<script>
+    document.getElementById('ball').addEventListener('click',function(e){
+        alert("ball clicked")
+    },false)
+        document.getElementById('images').addEventListener('click',function(e){
+            alert("images clicked")
+    },false)
+    document.getElementById('google').addEventListener('click',function(e){
+        e.defaultPrevented();
+        e.stopPropagation()
+        console.log("google clicked")
+    },false)
+    //e is event object
+    //attatchEvent,jQuery
+    //in console read type,timestamp,defalutPrevented,target
+    //toElement,srcElement,currentTarget,stopPrevention
+    //clientX,clientY,screenX,screenY,altkey,shiftkey,keyCode
+
+    //see diff between true and false
+
+
+    //to hide images---->>>
+    document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e.target.tagName);
+        if(e.target.tagName==='IMG'){
+            console.log(e.target.id);
+            let removeit=e.target
+        removeit.remove()
+        }
+        
+    })
+</script>
+</html>
